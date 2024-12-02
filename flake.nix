@@ -49,7 +49,7 @@
               languages.python = {
                 enable = true;
 
-                version = "3.12";
+                version = "3.13";
 
                 poetry = {
                   enable = true;

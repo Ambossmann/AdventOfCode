@@ -37,7 +37,7 @@ authors = ["Timo Gottszky <timogottszky+git@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 matplotlib = "^3.9.3"
 networkx = "^3.4.2"
 numpy = "^2.1.3"
