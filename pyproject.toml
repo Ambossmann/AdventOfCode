@@ -37,11 +37,13 @@ authors = ["Timo Gottszky <timogottszky+git@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.12"
 matplotlib = "^3.9.3"
 networkx = "^3.4.2"
 numpy = "^2.1.3"
 sympy = "^1.13.3"
+tk-tools = "^0.16.0"
+scipy = "^1.14.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"

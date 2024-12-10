@@ -7,11 +7,6 @@
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs-python = {
-      url = "github:cachix/nixpkgs-python";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   nixConfig = {
@@ -38,7 +33,9 @@
     devShells =
       forEachSystem
       (system: let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+        };
       in {
         default = devenv.lib.mkShell {
           inherit inputs pkgs;
@@ -46,16 +43,21 @@
             {
               packages = [];
 
+              env.MPLBACKEND = "TkAgg";
+
               languages.python = {
                 enable = true;
 
-                version = "3.13";
+                # Use 3.12 because numpy crashes with 3.13
+                package = pkgs.python312Full;
 
                 poetry = {
                   enable = true;
                   activate.enable = true;
                   install.enable = true;
                 };
+
+                libraries = [];
               };
             }
           ];
