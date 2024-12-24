@@ -41,7 +41,9 @@
           inherit inputs pkgs;
           modules = [
             {
-              packages = [];
+              packages = with pkgs; [
+                graphviz-nox
+              ];
 
               env.MPLBACKEND = "TkAgg";
 
@@ -57,7 +59,9 @@
                   install.enable = true;
                 };
 
-                libraries = [];
+                libraries = with pkgs; [
+                  graphviz-nox
+                ];
               };
             }
           ];
