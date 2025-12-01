@@ -9,11 +9,6 @@
     };
   };
 
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
-  };
-
   outputs = {
     self,
     nixpkgs,
@@ -50,8 +45,10 @@
               languages.python = {
                 enable = true;
 
-                # Use 3.12 because numpy crashes with 3.13
-                package = pkgs.python312Full;
+                package = pkgs.python313;
+                # .withPackages (python-pkgs: with python-pkgs; [
+                #     tkinter
+                # ]);
 
                 poetry = {
                   enable = true;
