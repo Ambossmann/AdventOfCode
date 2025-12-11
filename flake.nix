@@ -38,17 +38,17 @@
             {
               packages = with pkgs; [
                 graphviz-nox
-                libz
+                zlib
               ];
 
               env.NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
                 gcc-unwrapped
-                libz
+                zlib
               ]);
 
               env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
                 gcc-unwrapped
-                libz
+                zlib
               ]);
 
               env.MPLBACKEND = "TkAgg";
@@ -69,7 +69,7 @@
 
                 libraries = with pkgs; [
                   graphviz-nox
-                  libz
+                  zlib
                 ];
               };
             }
