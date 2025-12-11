@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
 
     devenv = {
@@ -38,7 +38,18 @@
             {
               packages = with pkgs; [
                 graphviz-nox
+                libz
               ];
+
+              env.NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
+                gcc-unwrapped
+                libz
+              ]);
+
+              env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
+                gcc-unwrapped
+                libz
+              ]);
 
               env.MPLBACKEND = "TkAgg";
 
@@ -58,6 +69,7 @@
 
                 libraries = with pkgs; [
                   graphviz-nox
+                  libz
                 ];
               };
             }
